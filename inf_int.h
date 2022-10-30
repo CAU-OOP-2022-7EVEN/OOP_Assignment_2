@@ -31,7 +31,8 @@ public:
     friend inf_int operator+(const inf_int &, const inf_int &);
     friend inf_int operator-(const inf_int &, const inf_int &);
     friend inf_int operator*(const inf_int &, const inf_int &);
-    void inf_int::Add(const char num, const unsigned int index);
+    void Add(const char num, const unsigned int index);
+    void Sub(const char num, const unsigned int index);
     // friend inf_int operator/(const inf_int& , const inf_int&); // not required
     friend ostream &operator<<(ostream &, const inf_int &);
     // friend istream& operator>>(istream& , inf_int&);    // not required

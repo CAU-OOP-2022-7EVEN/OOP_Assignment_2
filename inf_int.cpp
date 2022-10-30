@@ -57,7 +57,7 @@ inf_int::inf_int(const char *str) // by 채승운
         this->digits = new char[length + 1];
         for (i = length - 1; i >= 0; i--)
         {
-            digits[i] = str[length - i]; // 계산을 위한 역순 삽입, str[0] 제외)
+            digits[i] = str[length - i]; // 계산을 위한 역순 삽입, str[0] 제외
         }
     }
     else // 양수일 때
@@ -253,5 +253,34 @@ void inf_int::Add(const char num, const unsigned int index) // a의 index 자리
     {                                  // 자리올림이 발생할 경우
         this->digits[index - 1] -= 10; // 현재 자릿수에서 (아스키값) 10을 빼고
         Add('1', index + 1);           // 윗자리에 1을 더한다
+    }
+}
+
+void inf_int::Sub(const char num, const unsigned int index) // a의 index 자리수에 n을 뺀다. 0<=n<=9, ex) a가 391일때, Add(a, 2, 2)의 결과는 371
+{
+    if (this->length < index)
+    {
+        this->digits = (char *)realloc(this->digits, index + 1);
+        if (this->digits == NULL)
+        { // 할당 실패 예외처리
+            cout << "Memory reallocation failed, the program will terminate." << endl;
+            exit(0);
+        }
+
+        this->length = index;              // 길이 지정
+        this->digits[this->length] = '\0'; // 널문자 삽입
+    }
+
+    if (this->digits[index - 1] < '0')
+    { // 연산 전에 '0'보다 작은 아스키값인 경우 0으로 채움. 쓰여지지 않았던 새로운 자리수일 경우 발생
+        this->digits[index - 1] = '0';
+    }
+
+    this->digits[index - 1] -= num - '0'; // 값 연산 (빼기)
+
+    if (this->digits[index - 1] < '0')
+    {                                  // 자리내림이 발생할 경우
+        this->digits[index - 1] += 10; // 현재 자릿수에서 (아스키값) 10을 더하고
+        Sub('1', index + 1);           // 윗자리에 1을 뺀다.
     }
 }
