@@ -13,6 +13,8 @@ private:
     // ex) 15311111111111111 -> digits="11111111111111351", length=17, thesign=true;
     // ex) -12345555555555 -> digits="55555555554321", length=14, thesign=false
     // You may modify or add private members of inf_int class. So, it is OK to insert Add() private member function in inf_int class. However, You may not modify public members of inf_int class.
+    void Add(const char num, const unsigned int index); // public members에 추가되면 안 됨
+    void Sub(const char num, const unsigned int index); // void inf_int::Add(~~~) <-> void Add(~~~) --> 컴파일러 버전에 따름
 
 public:
     inf_int(); // assign 0 as a default value
@@ -31,8 +33,6 @@ public:
     friend inf_int operator+(const inf_int &, const inf_int &);
     friend inf_int operator-(const inf_int &, const inf_int &);
     friend inf_int operator*(const inf_int &, const inf_int &);
-    void inf_int::Add(const char num, const unsigned int index);
-    void inf_int::Sub(const char num, const unsigned int index);
     // friend inf_int operator/(const inf_int& , const inf_int&); // not required
     friend ostream &operator<<(ostream &, const inf_int &);
     // friend istream& operator>>(istream& , inf_int&);    // not required

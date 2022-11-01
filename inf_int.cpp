@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "inf_int.h"
 
 inf_int::inf_int()
@@ -49,7 +51,7 @@ inf_int::inf_int(int n)
 
 inf_int::inf_int(const char *str) // by 채승운
 {
-    unsigned int i;
+    int i;      //unsigned로 둘 때 positive case에서 역순 삽입 시 에러 발생
     if (str[0] == '-') // 음수일 때
     {
         this->thesign = false;
@@ -202,13 +204,86 @@ inf_int operator+(const inf_int &a, const inf_int &b)
     }
 }
 
-inf_int operator-(const inf_int &a, const inf_int &b)
+inf_int operator-(const inf_int &a, const inf_int &b)   //코드 최적화 필요
 {
-    // to be filled
+    inf_int c;
+    unsigned int i;
+
+    if (a.thesign == b.thesign && a.thesign == true)
+    { // 이항의 부호가 양수로 같을 경우
+        if (a > b or a == b) {      //a의 절댓값이 b보다 크거나 같을 때
+            for (i = 0; i < a.length; i++)
+            {
+                c.Add(a.digits[i], i + 1);
+            }
+            for (i = 0; i < b.length; i++)
+            {
+                c.Sub(b.digits[i], i + 1);
+            }
+
+            c.thesign = a.thesign;
+        }
+        else {      //a의 절댓값이 b보다 작을 때
+            for (i = 0; i < b.length; i++)
+            {
+                c.Add(b.digits[i], i + 1);
+            }
+            for (i = 0; i < a.length; i++)
+            {
+                c.Sub(a.digits[i], i + 1);
+            }
+
+            c.thesign = !(a.thesign);
+        }
+        return c;
+    }
+    else if (a.thesign == b.thesign && a.thesign == false) 
+    { // 이항의 부호가 음수로 같을 경우
+        if (a < b or a == b) {      //a의 절댓값이 b보다 크거나 같을 때
+            for (i = 0; i < a.length; i++)
+            {
+                c.Add(a.digits[i], i + 1);
+            }
+            for (i = 0; i < b.length; i++)
+            {
+                c.Sub(b.digits[i], i + 1);
+            }
+
+            c.thesign = a.thesign;
+        }
+        else {      //a의 절댓값이 b보다 작을 때
+            for (i = 0; i < b.length; i++)
+            {
+                c.Add(b.digits[i], i + 1);
+            }
+            for (i = 0; i < a.length; i++)
+            {
+                c.Sub(a.digits[i], i + 1);
+            }
+
+            c.thesign = !(a.thesign);
+        }
+        return c;
+    }
+    else
+    { // 이항의 부호가 다를 경우 + 연산
+        for (i = 0; i < a.length; i++)
+        {
+            c.Add(a.digits[i], i + 1);
+        }
+        for (i = 0; i < b.length; i++)
+        {
+            c.Add(b.digits[i], i + 1);
+        }
+        c.thesign = a.thesign;
+
+        return c;
+    }
 }
 
 inf_int operator*(const inf_int &a, const inf_int &b)
 {
+    return b;   // returning dummies
     // to be filled
 }
 
