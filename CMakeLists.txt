@@ -3,4 +3,4 @@ project(OOP_Assignment_2)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(OOP_Assignment_2 main.cpp)
+add_executable(OOP_Assignment_2 main.cpp inf_int.cpp)
