@@ -1,2 +1,13 @@
 .idea/
+.vscode/
+build/
 cmake-build-debug/
+CMakeFiles/
+
+*.cmake
+Makefile
+*.DS_store
+*.DS_Store
+
+CMakeCache.txt
+OOP_Assignment_2
