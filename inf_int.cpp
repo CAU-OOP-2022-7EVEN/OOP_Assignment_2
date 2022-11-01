@@ -211,7 +211,7 @@ inf_int operator-(const inf_int &a, const inf_int &b)   //코드 최적화 필�
 
     if (a.thesign == b.thesign && a.thesign == true)
     { // 이항의 부호가 양수로 같을 경우
-        if (a > b or a == b) {      //a의 절댓값이 b보다 크거나 같을 때
+        if (a > b || a == b) {      //a의 절댓값이 b보다 크거나 같을 때
             for (i = 0; i < a.length; i++)
             {
                 c.Add(a.digits[i], i + 1);
@@ -239,7 +239,7 @@ inf_int operator-(const inf_int &a, const inf_int &b)   //코드 최적화 필�
     }
     else if (a.thesign == b.thesign && a.thesign == false) 
     { // 이항의 부호가 음수로 같을 경우
-        if (a < b or a == b) {      //a의 절댓값이 b보다 크거나 같을 때
+        if (a < b || a == b) {      //a의 절댓값이 b보다 크거나 같을 때
             for (i = 0; i < a.length; i++)
             {
                 c.Add(a.digits[i], i + 1);
@@ -283,8 +283,21 @@ inf_int operator-(const inf_int &a, const inf_int &b)   //코드 최적화 필�
 
 inf_int operator*(const inf_int &a, const inf_int &b)
 {
-    return b;   // returning dummies
-    // to be filled
+    inf_int c;
+
+    for (unsigned int i = 0; i < a.length; ++i)
+    {
+        // traverse multiplicand
+        for (unsigned int j = 0; j < b.length; ++j)
+        {
+            // traverse multiplier
+            c.Add((a.digits[i] - '0') * (b.digits[j] - '0'), j + i + 1);
+            // multiplicand와 multiplier의 한 자리수씩 곱한 결과 Add
+        }
+    }
+    a.thesign == b.thesign ? c.thesign = true : c.thesign = false;
+    // 이항 부호가 같다면 true, 다르다면 false
+    return c;
 }
 
 ostream &operator<<(ostream &out, const inf_int &a)
@@ -300,6 +313,45 @@ ostream &operator<<(ostream &out, const inf_int &a)
         out << a.digits[i];
     }
     return out;
+}
+
+void inf_int::Add(const int num, const unsigned int index) // a의 index 자리수에 n을 더한다. 0<=n<=9, ex) a가 82일때, Add(a, 36, 2)의 결과는 442
+{
+    if (this->length < index)
+    {        
+        this->digits = (char*)realloc(this->digits, index + 1);        
+        if (this->digits == NULL)
+        { // 할당 실패 예외처리
+            cout << "Memory reallocation failed, the program will terminate." << endl;
+            exit(0);
+        }        
+        this->length = index;              // 길이 지정
+        this->digits[this->length] = '\0'; // 널문자 삽입        
+    }
+
+    if (this->digits[index - 1] < '0') 
+    { // 연산 전에 '0'보다 작은 아스키값인 경우 0으로 채움. 쓰여지지 않았던 새로운 자리수일 경우 발생
+        this->digits[index - 1] = '0';
+    }
+
+    int product = (this->digits[index - 1] - '0') + num; 
+    // 값 연산
+
+    if (product > 9)
+    {   // 자리올림이 발생하는 경우
+        
+        int carry = product / 10; // carry
+        int remainder = product % 10; // remainder
+
+        this->digits[index - 1] = (char)(remainder + 48);
+        // remainder를 (아스키값) 48 더해 char로 변환해 현재 자릿수에 삽입
+        Add(carry, index + 1);
+        // carry는 다시한번 Add 호출
+    }
+    else {
+        this->digits[index - 1] = (char)(product + 48);
+        // 자리올림 발생하지 않는다면, product를 char로 변환해 바로 삽입
+    }
 }
 
 void inf_int::Add(const char num, const unsigned int index) // a의 index 자리수에 n을 더한다. 0<=n<=9, ex) a가 391일때, Add(a, 2, 2)의 결과는 411
