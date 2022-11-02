@@ -8,6 +8,6 @@ set(CMAKE_PREFIX_PATH  "C:\\Qt\\Qt5.14.2\\5.14.2\\mingw73_64")
 
 find_package(Qt5Widgets REQUIRED)
 
-add_executable(OOP_Assignment_2 main.cpp inf_int.cpp)
+add_executable(OOP_Assignment_2 main.cpp inf_int.cpp UIManager.cpp UIManager.h)
 
 target_link_libraries(OOP_Assignment_2 Qt5::Widgets)
