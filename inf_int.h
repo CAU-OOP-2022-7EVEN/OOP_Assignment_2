@@ -40,7 +40,7 @@ public:
     // friend istream& operator>>(istream& , inf_int&);    // not required
 
     inf_int subInfInt(const unsigned int startIndex, const unsigned int endIndex);
-    inf_int pow(const unsigned int exponent);
+    inf_int pow(const unsigned int exponent); 
 };
 
 #endif
