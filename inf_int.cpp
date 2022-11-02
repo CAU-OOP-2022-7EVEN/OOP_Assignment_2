@@ -362,7 +362,7 @@ inf_int operator/(const inf_int &a, const inf_int &b)
             // operand -> 111100, 11110
 
             // inf_int operand = q.subInfInt(i, i + b.length);
-            
+
             inf_int operand = b * inf_int(10).pow(i - 1);
             int subQ = 0;
 
@@ -378,7 +378,8 @@ inf_int operator/(const inf_int &a, const inf_int &b)
             // 각 자리 몫이 나오면, 해당 자리에 넣어줌.
             c.Add(subQ, i);
         }
-
+        
+        c.thesign = (a.thesign == b.thesign ? true : false);
         return c;
     }
 
