@@ -1,9 +1,23 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <cstring>
+#include <string>
 #include "inf_int.h"
 
 inf_int::inf_int()
 {
+    /**
+     * A default constructor (that doesn’t need any parameter) 
+     * will have a simple process to initialize the internal members.
+     * 
+     * we will initialize the digit as zero, 
+     * additionally putting the null at the end of the digit array 
+     * to indicate the end of the string,
+     * digits = {48, 0};
+     * 
+     * and set the length as 1 
+     * and bool sign as true. 
+     */
     this->digits = new char[2]; // 동적할당
 
     this->digits[0] = '0'; // default 값 0 설정
@@ -300,6 +314,91 @@ inf_int operator*(const inf_int &a, const inf_int &b)
     return c;
 }
 
+inf_int operator/(const inf_int &a, const inf_int &b)
+{
+    inf_int c;
+
+    // 제수의 길이가 피제수의 길이보다 길면, 몫을 '0'로 반환한다.
+    // 예) 4567 / 23456 = 0 (나머지 : 4567)
+    if (a.length < b.length)
+        return c;
+    else if (a.length == b.length)
+    {
+        if (a < b)
+        {
+            // 예) 4567 / 4568 = 0 (나머지 : 4567)
+            return c;
+        }
+        else
+        {
+            inf_int q(a);
+            q.thesign = true;
+            // 예) -4567 / 1111 = -4 (나머지 : -123)
+            // 4567 / 1111 먼저 계산하고 부호 처리
+            // 몫이 1의 자리만 나온다. 피제수에서 제수를 뺄 수 있을만큼 빼고, 뺀 횟수만큼 Add 함수를 통해 카운트해준다.
+            while (q > b || q == b)
+            {
+                for (int i = a.length - 1; i >= 0; i--)
+                {
+                    q.Sub(b.digits[i], i + 1);
+                }
+                c.Add('1', 1);
+            }
+            c.length = 1;
+            c.thesign = (a.thesign == b.thesign ? true : false);
+            return c;
+        }
+    }
+    else
+    {
+        // 제수를 지속적으로 빼줄 가변적 피제수
+        // ex) 456789 / 1111
+        // q -> 345689, 234589, 123489, 11189, 79로 변화
+        inf_int q(a);
+
+        for(int i = a.length - b.length + 1; i >= 1; i--){
+            // subInfInt for subtraction 각 자리수 마다
+            // ex) 456789 / 1111
+            // operand -> 111100, 11110
+
+            // inf_int operand = q.subInfInt(i, i + b.length);
+            
+            inf_int operand = b * inf_int(10).pow(i - 1);
+            int subQ = 0;
+
+            while(q > operand || q == operand){
+                q = q - operand;
+
+                subQ++;
+            }
+
+            if(subQ == 0)
+                continue;
+
+            // 각 자리 몫이 나오면, 해당 자리에 넣어줌.
+            c.Add(subQ, i);
+        }
+
+        return c;
+    }
+
+    // 알 수 없는 오류로 분기문을 빠져나온 경우, (int_inf)'0' 반환
+    return c;
+}
+
+inf_int operator%(const inf_int &a, const inf_int &b){
+    inf_int c;
+    
+    // a / b == Q (Remainder c)
+    // a == b * Q + c
+    // c == a - b * Q
+    // c == a - b * (a / b) 
+    c = a - (b * (a / b));
+
+    // 나머지의 부호는 '=' 연산에서 처리
+    return c;
+}
+
 ostream &operator<<(ostream &out, const inf_int &a)
 {
     int i;
@@ -410,4 +509,39 @@ void inf_int::Sub(const char num, const unsigned int index) // a의 index 자리
         this->digits[index - 1] += 10; // 현재 자릿수에서 (아스키값) 10을 더하고
         Sub('1', index + 1);           // 윗자리에 1을 뺀다.
     }
+}
+
+inf_int inf_int::subInfInt(const unsigned int startIndex, const unsigned int endIndex){
+    /**
+     * @brief return sub inf_int within index (likewise substr() of string),
+     * thesign is same with parent inf_int
+     * index starts with 1 (king received)
+     * 
+     * @param startIndex 
+     * @param endIndex 
+     * @return sub inf_int within index (likewise substr() of string)
+     */
+    // ex) new inf_int('12345').subInfInt(2,4) == new inf_int('234')
+    unsigned int _size = endIndex - startIndex + 1;
+
+    inf_int temp(*this);
+    string str = temp.digits;
+    str = str.substr(startIndex - 1, _size);
+
+    temp.digits = new char[_size];
+    strcpy(temp.digits, str.c_str());
+    temp.length = _size;
+    temp.thesign = this->thesign;
+
+    return temp;
+}
+
+inf_int inf_int::pow(const unsigned int exponent){
+    inf_int result(1);
+
+    for(int i = 0; i < exponent; i++){
+        result = result * (*this);
+    }
+
+    return result;
 }
