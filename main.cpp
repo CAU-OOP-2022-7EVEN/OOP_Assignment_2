@@ -1,9 +1,10 @@
 #include <iostream>
 #include "inf_int.h"
+#include "UIManager.h"
 
 using namespace std;
 
-int main(){
+int main(int argc, char** argv){
     cin.tie(0);
     cout.tie(0);
     ios_base::sync_with_stdio(false);
@@ -27,6 +28,8 @@ int main(){
         cout << "f : " << f << endl;
         cout << "g : " << g << endl;
     }
+
+    openMainMenu(argc, argv);
 
     return 0;
 }
