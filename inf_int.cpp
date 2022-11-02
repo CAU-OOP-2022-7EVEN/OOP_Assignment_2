@@ -7,16 +7,16 @@
 inf_int::inf_int()
 {
     /**
-     * A default constructor (that doesn’t need any parameter) 
+     * A default constructor (that doesn’t need any parameter)
      * will have a simple process to initialize the internal members.
-     * 
-     * we will initialize the digit as zero, 
-     * additionally putting the null at the end of the digit array 
+     *
+     * we will initialize the digit as zero,
+     * additionally putting the null at the end of the digit array
      * to indicate the end of the string,
      * digits = {48, 0};
-     * 
-     * and set the length as 1 
-     * and bool sign as true. 
+     *
+     * and set the length as 1
+     * and bool sign as true.
      */
     this->digits = new char[2]; // 동적할당
 
@@ -63,7 +63,7 @@ inf_int::inf_int(int n)
     }
 }
 
-inf_int::inf_int(const char *str) // by 채승운
+inf_int::inf_int(const char* str) // by 채승운
 {
     int i;      //unsigned로 둘 때 positive case에서 역순 삽입 시 에러 발생
     if (str[0] == '-') // 음수일 때
@@ -88,7 +88,7 @@ inf_int::inf_int(const char *str) // by 채승운
     }
 }
 
-inf_int::inf_int(const inf_int &a)
+inf_int::inf_int(const inf_int& a)
 {
     this->digits = new char[a.length + 1];
 
@@ -102,7 +102,7 @@ inf_int::~inf_int()
     delete digits; // 메모리 할당 해제
 }
 
-inf_int &inf_int::operator=(const inf_int &a)
+inf_int& inf_int::operator=(const inf_int& a)
 {
     if (this->digits)
     {
@@ -117,7 +117,7 @@ inf_int &inf_int::operator=(const inf_int &a)
     return *this;
 }
 
-bool operator==(const inf_int &a, const inf_int &b)
+bool operator==(const inf_int& a, const inf_int& b)
 {
     // we assume 0 is always positive.
     if ((strcmp(a.digits, b.digits) == 0) && a.thesign == b.thesign) // 부호가 같고, 절댓값이 일치해야함.
@@ -125,12 +125,12 @@ bool operator==(const inf_int &a, const inf_int &b)
     return false;
 }
 
-bool operator!=(const inf_int &a, const inf_int &b)
+bool operator!=(const inf_int& a, const inf_int& b)
 {
     return !operator==(a, b);
 }
 
-bool operator>(const inf_int &a, const inf_int &b)
+bool operator>(const inf_int& a, const inf_int& b)
 {
     if (a.thesign != b.thesign) // 두 부호가 다른 경우 a의 부호를 따라감, 양수>음수면 당연한 거고, 음수>양수면 false이므로 음수 반환해도 무방함.
         return a.thesign;
@@ -177,7 +177,7 @@ bool operator>(const inf_int &a, const inf_int &b)
     return false; // continue만 계속하여 반복문을 이탈해버린 상황, 이는 "같음"을 의미, 즉 이 함수의 목적인 ">"가 아니므로 false
 }
 
-bool operator<(const inf_int &a, const inf_int &b)
+bool operator<(const inf_int& a, const inf_int& b)
 {
     if (operator>(a, b) || operator==(a, b))
     {
@@ -189,7 +189,7 @@ bool operator<(const inf_int &a, const inf_int &b)
     }
 }
 
-inf_int operator+(const inf_int &a, const inf_int &b)
+inf_int operator+(const inf_int& a, const inf_int& b)
 {
     inf_int c;
     unsigned int i;
@@ -218,7 +218,7 @@ inf_int operator+(const inf_int &a, const inf_int &b)
     }
 }
 
-inf_int operator-(const inf_int &a, const inf_int &b)   //코드 최적화 필요
+inf_int operator-(const inf_int& a, const inf_int& b)   //코드 최적화 필요
 {
     inf_int c;
     unsigned int i;
@@ -251,7 +251,7 @@ inf_int operator-(const inf_int &a, const inf_int &b)   //코드 최적화 필�
         }
         return c;
     }
-    else if (a.thesign == b.thesign && a.thesign == false) 
+    else if (a.thesign == b.thesign && a.thesign == false)
     { // 이항의 부호가 음수로 같을 경우
         if (a < b || a == b) {      //a의 절댓값이 b보다 크거나 같을 때
             for (i = 0; i < a.length; i++)
@@ -295,7 +295,7 @@ inf_int operator-(const inf_int &a, const inf_int &b)   //코드 최적화 필�
     }
 }
 
-inf_int operator*(const inf_int &a, const inf_int &b)
+inf_int operator*(const inf_int& a, const inf_int& b)
 {
     inf_int c;
 
@@ -314,7 +314,7 @@ inf_int operator*(const inf_int &a, const inf_int &b)
     return c;
 }
 
-inf_int operator/(const inf_int &a, const inf_int &b)
+inf_int operator/(const inf_int& a, const inf_int& b)
 {
     inf_int c;
 
@@ -356,7 +356,7 @@ inf_int operator/(const inf_int &a, const inf_int &b)
         // q -> 345689, 234589, 123489, 11189, 79로 변화
         inf_int q(a);
 
-        for(int i = a.length - b.length + 1; i >= 1; i--){
+        for (int i = a.length - b.length + 1; i >= 1; i--) {
             // subInfInt for subtraction 각 자리수 마다
             // ex) 456789 / 1111
             // operand -> 111100, 11110
@@ -366,19 +366,19 @@ inf_int operator/(const inf_int &a, const inf_int &b)
             inf_int operand = b * inf_int(10).pow(i - 1);
             int subQ = 0;
 
-            while(q > operand || q == operand){
+            while (q > operand || q == operand) {
                 q = q - operand;
 
                 subQ++;
             }
 
-            if(subQ == 0)
+            if (subQ == 0)
                 continue;
 
             // 각 자리 몫이 나오면, 해당 자리에 넣어줌.
             c.Add(subQ, i);
         }
-        
+
         c.thesign = (a.thesign == b.thesign ? true : false);
         return c;
     }
@@ -387,9 +387,9 @@ inf_int operator/(const inf_int &a, const inf_int &b)
     return c;
 }
 
-inf_int operator%(const inf_int &a, const inf_int &b){
+inf_int operator%(const inf_int& a, const inf_int& b) {
     inf_int c;
-    
+
     // a / b == Q (Remainder c)
     // a == b * Q + c
     // c == a - b * Q
@@ -400,7 +400,7 @@ inf_int operator%(const inf_int &a, const inf_int &b){
     return c;
 }
 
-ostream &operator<<(ostream &out, const inf_int &a)
+ostream& operator<<(ostream& out, const inf_int& a)
 {
     int i;
 
@@ -418,28 +418,28 @@ ostream &operator<<(ostream &out, const inf_int &a)
 void inf_int::Add(const int num, const unsigned int index) // a의 index 자리수에 n을 더한다. 0<=n<=9, ex) a가 82일때, Add(a, 36, 2)의 결과는 442
 {
     if (this->length < index)
-    {        
-        this->digits = (char*)realloc(this->digits, index + 1);        
+    {
+        this->digits = (char*)realloc(this->digits, index + 1);
         if (this->digits == NULL)
         { // 할당 실패 예외처리
             cout << "Memory reallocation failed, the program will terminate." << endl;
             exit(0);
-        }        
+        }
         this->length = index;              // 길이 지정
         this->digits[this->length] = '\0'; // 널문자 삽입        
     }
 
-    if (this->digits[index - 1] < '0') 
+    if (this->digits[index - 1] < '0')
     { // 연산 전에 '0'보다 작은 아스키값인 경우 0으로 채움. 쓰여지지 않았던 새로운 자리수일 경우 발생
         this->digits[index - 1] = '0';
     }
 
-    int product = (this->digits[index - 1] - '0') + num; 
+    int product = (this->digits[index - 1] - '0') + num;
     // 값 연산
 
     if (product > 9)
     {   // 자리올림이 발생하는 경우
-        
+
         int carry = product / 10; // carry
         int remainder = product % 10; // remainder
 
@@ -458,7 +458,7 @@ void inf_int::Add(const char num, const unsigned int index) // a의 index 자리
 {
     if (this->length < index)
     {
-        this->digits = (char *)realloc(this->digits, index + 1);
+        this->digits = (char*)realloc(this->digits, index + 1);
         if (this->digits == NULL)
         { // 할당 실패 예외처리
             cout << "Memory reallocation failed, the program will terminate." << endl;
@@ -483,11 +483,11 @@ void inf_int::Add(const char num, const unsigned int index) // a의 index 자리
     }
 }
 
-void inf_int::Sub(const char num, const unsigned int index) // a의 index 자리수에 n을 뺀다. 0<=n<=9, ex) a가 391일때, Add(a, 2, 2)의 결과는 371
+void inf_int::Sub(const char num, const unsigned int index) // a의 index 자리수에 n을 뺀다. 0<=n<=9, ex) a가 391일때, Sub(a, 2, 2)의 결과는 371
 {
     if (this->length < index)
     {
-        this->digits = (char *)realloc(this->digits, index + 1);
+        this->digits = (char*)realloc(this->digits, index + 1);
         if (this->digits == NULL)
         { // 할당 실패 예외처리
             cout << "Memory reallocation failed, the program will terminate." << endl;
@@ -510,19 +510,35 @@ void inf_int::Sub(const char num, const unsigned int index) // a의 index 자리
         this->digits[index - 1] += 10; // 현재 자릿수에서 (아스키값) 10을 더하고
         Sub('1', index + 1);           // 윗자리에 1을 뺀다.
     }
+    if (this->digits[this->length - 1] == '0')  // 자리수가 감소하는 경우
+    {
+        this->digits = (char*)realloc(this->digits, this->length);  // 앞자리에 생기는 0을 제거하기 위해 재할당
+        if (this->digits == NULL)
+        { // 할당 실패 예외처리
+            cout << "Memory reallocation failed, the program will terminate." << endl;
+            exit(0);
+        }
+        this->length = index - 1;              // 길이 재지정 (1 감소)
+    }
+    /*
+    for (int i = this->length - 1; i >= 0; i--) {
+        cout << this->digits[i];
+    }
+    cout << endl;
+    */
 }
 
-inf_int inf_int::subInfInt(const unsigned int startIndex, const unsigned int endIndex){
+inf_int inf_int::subInfInt(const unsigned int startIndex, const unsigned int endIndex) {
     /**
      * @brief return sub inf_int within index (likewise substr() of string),
      * thesign is same with parent inf_int
      * index starts with 1 (king received)
-     * 
-     * @param startIndex 
-     * @param endIndex 
+     *
+     * @param startIndex
+     * @param endIndex
      * @return sub inf_int within index (likewise substr() of string)
      */
-    // ex) new inf_int('12345').subInfInt(2,4) == new inf_int('234')
+     // ex) new inf_int('12345').subInfInt(2,4) == new inf_int('234')
     unsigned int _size = endIndex - startIndex + 1;
 
     inf_int temp(*this);
@@ -537,10 +553,10 @@ inf_int inf_int::subInfInt(const unsigned int startIndex, const unsigned int end
     return temp;
 }
 
-inf_int inf_int::pow(const unsigned int exponent){
+inf_int inf_int::pow(const unsigned int exponent) {
     inf_int result(1);
 
-    for(int i = 0; i < exponent; i++){
+    for (int i = 0; i < exponent; i++) {
         result = result * (*this);
     }
 
