@@ -510,9 +510,9 @@ void inf_int::Sub(const char num, const unsigned int index) // a의 index 자리
         this->digits[index - 1] += 10; // 현재 자릿수에서 (아스키값) 10을 더하고
         Sub('1', index + 1);           // 윗자리에 1을 뺀다.
     }
-    if (this->digits[this->length - 1] == '0')  // 자리수가 감소하는 경우
+    if (this->digits[this->length - 1] == '0')  // 자리수가 감소하는 경우 (가장 높은 자리수의 아스키값이 '0')
     {
-        this->digits = (char*)realloc(this->digits, this->length);  // 앞자리에 생기는 0을 제거하기 위해 재할당
+        this->digits = (char*)realloc(this->digits, this->length);  // 아스키값이 '0'인 앞자리 제거를 위해 재할당
         if (this->digits == NULL)
         { // 할당 실패 예외처리
             cout << "Memory reallocation failed, the program will terminate." << endl;
