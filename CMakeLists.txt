@@ -7,6 +7,6 @@ set(CMAKE_PREFIX_PATH "/opt/homebrew/opt/qt@5")
 
 find_package(Qt5Widgets REQUIRED)
 
-add_executable(OOP_Assignment_2 main.cpp inf_int.cpp)
+add_executable(OOP_Assignment_2 main.cpp inf_int.cpp QT_UI/mainmenu.cpp QT_UI/mainmenu.h QT_UI/mainmenu.ui)
 
 target_link_libraries(OOP_Assignment_2 Qt5::Widgets)
