@@ -1,0 +1,1 @@
+add_executable(OOP_Assignment_2 mainmenu.cpp mainmenu.h mainmenu.ui)
