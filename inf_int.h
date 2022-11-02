@@ -15,7 +15,7 @@ private:
     // You may modify or add private members of inf_int class. So, it is OK to insert Add() private member function in inf_int class. However, You may not modify public members of inf_int class.
     void Add(const int num, const unsigned int index); // made for multiply case
     void Add(const char num, const unsigned int index); // public members
-    void Sub(const char num, const unsigned int index); // void inf_int::Add(~~~) <-> void Add(~~~) --> �����Ϸ� ������ ����
+    void Sub(const char num, const unsigned int index); // void inf_int::Add(~~~) <-> void Add(~~~) -->
 
 public:
     inf_int(); // assign 0 as a default value
@@ -34,8 +34,8 @@ public:
     friend inf_int operator+(const inf_int &, const inf_int &);
     friend inf_int operator-(const inf_int &, const inf_int &);
     friend inf_int operator*(const inf_int &, const inf_int &);
-    friend inf_int operator/(const inf_int & , const inf_int &);
-    friend inf_int operator%(const inf_int & , const inf_int &);
+    friend inf_int operator/(const inf_int &, const inf_int &);
+    friend inf_int operator%(const inf_int &, const inf_int &);
     friend ostream &operator<<(ostream &, const inf_int &);
     // friend istream& operator>>(istream& , inf_int&);    // not required
 
