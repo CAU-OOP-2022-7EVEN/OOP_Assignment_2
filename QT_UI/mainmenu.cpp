@@ -7,6 +7,9 @@
 MainMenu::MainMenu(QWidget *parent) :
         QWidget(parent), ui(new Ui::MainMenu) {
     ui->setupUi(this);
+
+    sansPixmap[0].load(":/QT_UI/sans_1.png");
+    sansPixmap[1].load(":/QT_UI/sans_2.png");
 }
 
 MainMenu::~MainMenu() {
