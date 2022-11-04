@@ -10,3 +10,19 @@ MainMenu::MainMenu(QWidget *parent) :
 MainMenu::~MainMenu() {
     delete ui;
 }
+
+void MainMenu::on_btnPlus_clicked() {
+
+}
+
+void MainMenu::on_btnMinus_clicked() {
+
+}
+
+void MainMenu::on_btnMultiply_clicked() {
+
+}
+
+void MainMenu::on_btnDivision_clicked() {
+
+}

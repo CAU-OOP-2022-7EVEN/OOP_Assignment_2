@@ -20,7 +20,10 @@ private:
     Ui::MainMenu *ui;
 
 private slots:
-    void on_
+    void on_btnPlus_clicked();
+    void on_btnMinus_clicked();
+    void on_btnMultiply_clicked();
+    void on_btnDivision_clicked();
 };
 
 
