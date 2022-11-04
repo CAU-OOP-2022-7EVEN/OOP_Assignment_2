@@ -20,6 +20,8 @@ private:
     Ui::MainMenu *ui;
 
 private slots:
+    QPixmap sansPixmap[2];
+
     void on_btnPlus_clicked();
     void on_btnMinus_clicked();
     void on_btnMultiply_clicked();
