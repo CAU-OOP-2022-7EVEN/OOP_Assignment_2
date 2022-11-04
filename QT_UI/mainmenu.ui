@@ -22,15 +22,44 @@
                     <height>300</height>
                 </rect>
             </property>
-            <layout class="QVBoxLayout" name="layoutRight">
-                <item>
-                    <widget class="QLabel" name="labelResult">
-                        <property name="text">
-                            <string>Wa! Sans! RESULT_VIEW</string>
-                        </property>
-                    </widget>
-                </item>
-            </layout>
+            <widget class="QWidget" name="layoutRightImageContainer">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>400</width>
+                        <height>200</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="layoutRightImage">
+                    <item>
+                        <widget class="QLabel" name="labelResult1">
+                            <property name="text">
+                                <string>Wa! Sans! RESULT_VIEW</string>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </widget>
+            <widget class="QWidget" name="layoutRightResultContainer">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>200</y>
+                        <width>400</width>
+                        <height>100</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="layoutRightResult">
+                    <item>
+                        <widget class="QLabel" name="labelResult">
+                            <property name="text">
+                                <string>Wa! Sans! RESULT_VIEW</string>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </widget>
         </widget>
         <widget class="QWidget" name="layoutLeftContainer">
             <property name="geometry">

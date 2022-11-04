@@ -23,7 +23,11 @@ class Ui_MainMenu
 {
 public:
     QWidget *layoutRightContainer;
-    QVBoxLayout *layoutRight;
+    QWidget *layoutRightImageContainer;
+    QVBoxLayout *layoutRightImage;
+    QLabel *labelResult1;
+    QWidget *layoutRightResultContainer;
+    QVBoxLayout *layoutRightResult;
     QLabel *labelResult;
     QWidget *layoutLeftContainer;
     QWidget *layoutLeftInputContainer;
@@ -47,13 +51,27 @@ public:
         layoutRightContainer = new QWidget(MainMenu);
         layoutRightContainer->setObjectName(QString::fromUtf8("layoutRightContainer"));
         layoutRightContainer->setGeometry(QRect(400, 0, 400, 300));
-        layoutRight = new QVBoxLayout(layoutRightContainer);
-        layoutRight->setObjectName(QString::fromUtf8("layoutRight"));
-        layoutRight->setContentsMargins(0, 0, 0, 0);
-        labelResult = new QLabel(layoutRightContainer);
+        layoutRightImageContainer = new QWidget(layoutRightContainer);
+        layoutRightImageContainer->setObjectName(QString::fromUtf8("layoutRightImageContainer"));
+        layoutRightImageContainer->setGeometry(QRect(0, 0, 400, 200));
+        layoutRightImage = new QVBoxLayout(layoutRightImageContainer);
+        layoutRightImage->setObjectName(QString::fromUtf8("layoutRightImage"));
+        layoutRightImage->setContentsMargins(0, 0, 0, 0);
+        labelResult1 = new QLabel(layoutRightImageContainer);
+        labelResult1->setObjectName(QString::fromUtf8("labelResult1"));
+
+        layoutRightImage->addWidget(labelResult1);
+
+        layoutRightResultContainer = new QWidget(layoutRightContainer);
+        layoutRightResultContainer->setObjectName(QString::fromUtf8("layoutRightResultContainer"));
+        layoutRightResultContainer->setGeometry(QRect(0, 200, 400, 100));
+        layoutRightResult = new QVBoxLayout(layoutRightResultContainer);
+        layoutRightResult->setObjectName(QString::fromUtf8("layoutRightResult"));
+        layoutRightResult->setContentsMargins(0, 0, 0, 0);
+        labelResult = new QLabel(layoutRightResultContainer);
         labelResult->setObjectName(QString::fromUtf8("labelResult"));
 
-        layoutRight->addWidget(labelResult);
+        layoutRightResult->addWidget(labelResult);
 
         layoutLeftContainer = new QWidget(MainMenu);
         layoutLeftContainer->setObjectName(QString::fromUtf8("layoutLeftContainer"));
@@ -119,6 +137,7 @@ public:
     void retranslateUi(QWidget *MainMenu)
     {
         MainMenu->setWindowTitle(QCoreApplication::translate("MainMenu", "MainMenu", nullptr));
+        labelResult1->setText(QCoreApplication::translate("MainMenu", "Wa! Sans! RESULT_VIEW", nullptr));
         labelResult->setText(QCoreApplication::translate("MainMenu", "Wa! Sans! RESULT_VIEW", nullptr));
         labelNum1->setText(QCoreApplication::translate("MainMenu", "Number 1", nullptr));
         labelNum2->setText(QCoreApplication::translate("MainMenu", "Number 2", nullptr));
