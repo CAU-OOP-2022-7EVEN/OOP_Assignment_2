@@ -240,11 +240,11 @@ void inf_int_test::TestOperate10digits()
 void inf_int_test::TestOperate10digitsWith5digits()
 {
     pair<const char *, const char *> testA[5] = {
-        make_pair("1000000000", "2000000000"),
-        make_pair("1120000000", "4800000000"),
-        make_pair("4728000000", "3800000000"),
-        make_pair("4829000000", "2400000000"),
-        make_pair("3294000000", "1100000000")};
+        make_pair("1000000000", "20000"),
+        make_pair("1120000000", "48000"),
+        make_pair("4728000000", "38000"),
+        make_pair("4829000000", "24000"),
+        make_pair("3294000000", "11000")};
     cout << "---------- 10억(1000000000)의 자리 더하기(+) 케이스 -----------" << endl;
     for (int i = 0; i < 5; i++)
     {
