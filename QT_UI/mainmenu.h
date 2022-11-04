@@ -18,6 +18,9 @@ public:
 
 private:
     Ui::MainMenu *ui;
+
+private slots:
+    void on_
 };
 
 

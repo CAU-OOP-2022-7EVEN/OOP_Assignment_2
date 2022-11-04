@@ -22,81 +22,81 @@ QT_BEGIN_NAMESPACE
 class Ui_MainMenu
 {
 public:
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
-    QLabel *label_3;
-    QWidget *verticalLayoutWidget_2;
-    QVBoxLayout *verticalLayout_2;
-    QLabel *label;
-    QLineEdit *lineEdit;
-    QLabel *label_2;
-    QLineEdit *lineEdit_2;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton;
+    QWidget *layoutRightContainer;
+    QVBoxLayout *layoutRight;
+    QLabel *labelResult;
+    QWidget *layoutLeftContainer;
+    QVBoxLayout *layoutLeft;
+    QLabel *labelNum1;
+    QLineEdit *inputNum1;
+    QLabel *labelNum2;
+    QLineEdit *inputNum2;
+    QPushButton *btnPlus;
+    QPushButton *btnMinus;
+    QPushButton *btnMultiply;
+    QPushButton *btnDivision;
 
     void setupUi(QWidget *MainMenu)
     {
         if (MainMenu->objectName().isEmpty())
             MainMenu->setObjectName(QString::fromUtf8("MainMenu"));
         MainMenu->resize(800, 400);
-        verticalLayoutWidget = new QWidget(MainMenu);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(400, 0, 400, 400));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label_3 = new QLabel(verticalLayoutWidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        layoutRightContainer = new QWidget(MainMenu);
+        layoutRightContainer->setObjectName(QString::fromUtf8("layoutRightContainer"));
+        layoutRightContainer->setGeometry(QRect(400, 0, 400, 400));
+        layoutRight = new QVBoxLayout(layoutRightContainer);
+        layoutRight->setObjectName(QString::fromUtf8("layoutRight"));
+        layoutRight->setContentsMargins(0, 0, 0, 0);
+        labelResult = new QLabel(layoutRightContainer);
+        labelResult->setObjectName(QString::fromUtf8("labelResult"));
 
-        verticalLayout->addWidget(label_3);
+        layoutRight->addWidget(labelResult);
 
-        verticalLayoutWidget_2 = new QWidget(MainMenu);
-        verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
-        verticalLayoutWidget_2->setGeometry(QRect(0, 0, 400, 400));
-        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
-        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(verticalLayoutWidget_2);
-        label->setObjectName(QString::fromUtf8("label"));
+        layoutLeftContainer = new QWidget(MainMenu);
+        layoutLeftContainer->setObjectName(QString::fromUtf8("layoutLeftContainer"));
+        layoutLeftContainer->setGeometry(QRect(0, 0, 400, 400));
+        layoutLeft = new QVBoxLayout(layoutLeftContainer);
+        layoutLeft->setObjectName(QString::fromUtf8("layoutLeft"));
+        layoutLeft->setContentsMargins(0, 0, 0, 0);
+        labelNum1 = new QLabel(layoutLeftContainer);
+        labelNum1->setObjectName(QString::fromUtf8("labelNum1"));
 
-        verticalLayout_2->addWidget(label);
+        layoutLeft->addWidget(labelNum1);
 
-        lineEdit = new QLineEdit(verticalLayoutWidget_2);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        inputNum1 = new QLineEdit(layoutLeftContainer);
+        inputNum1->setObjectName(QString::fromUtf8("inputNum1"));
 
-        verticalLayout_2->addWidget(lineEdit);
+        layoutLeft->addWidget(inputNum1);
 
-        label_2 = new QLabel(verticalLayoutWidget_2);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        labelNum2 = new QLabel(layoutLeftContainer);
+        labelNum2->setObjectName(QString::fromUtf8("labelNum2"));
 
-        verticalLayout_2->addWidget(label_2);
+        layoutLeft->addWidget(labelNum2);
 
-        lineEdit_2 = new QLineEdit(verticalLayoutWidget_2);
-        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        inputNum2 = new QLineEdit(layoutLeftContainer);
+        inputNum2->setObjectName(QString::fromUtf8("inputNum2"));
 
-        verticalLayout_2->addWidget(lineEdit_2);
+        layoutLeft->addWidget(inputNum2);
 
-        pushButton_2 = new QPushButton(verticalLayoutWidget_2);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        btnPlus = new QPushButton(layoutLeftContainer);
+        btnPlus->setObjectName(QString::fromUtf8("btnPlus"));
 
-        verticalLayout_2->addWidget(pushButton_2);
+        layoutLeft->addWidget(btnPlus);
 
-        pushButton_3 = new QPushButton(verticalLayoutWidget_2);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+        btnMinus = new QPushButton(layoutLeftContainer);
+        btnMinus->setObjectName(QString::fromUtf8("btnMinus"));
 
-        verticalLayout_2->addWidget(pushButton_3);
+        layoutLeft->addWidget(btnMinus);
 
-        pushButton_4 = new QPushButton(verticalLayoutWidget_2);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+        btnMultiply = new QPushButton(layoutLeftContainer);
+        btnMultiply->setObjectName(QString::fromUtf8("btnMultiply"));
 
-        verticalLayout_2->addWidget(pushButton_4);
+        layoutLeft->addWidget(btnMultiply);
 
-        pushButton = new QPushButton(verticalLayoutWidget_2);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        btnDivision = new QPushButton(layoutLeftContainer);
+        btnDivision->setObjectName(QString::fromUtf8("btnDivision"));
 
-        verticalLayout_2->addWidget(pushButton);
+        layoutLeft->addWidget(btnDivision);
 
 
         retranslateUi(MainMenu);
@@ -107,13 +107,13 @@ public:
     void retranslateUi(QWidget *MainMenu)
     {
         MainMenu->setWindowTitle(QCoreApplication::translate("MainMenu", "MainMenu", nullptr));
-        label_3->setText(QCoreApplication::translate("MainMenu", "Wa! Sans! RESULT_VIEW", nullptr));
-        label->setText(QCoreApplication::translate("MainMenu", "Number 1", nullptr));
-        label_2->setText(QCoreApplication::translate("MainMenu", "Number 2", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainMenu", "Plus (+)", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainMenu", "Minus (-)", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainMenu", "Multiply (*)", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainMenu", "Division (/)", nullptr));
+        labelResult->setText(QCoreApplication::translate("MainMenu", "Wa! Sans! RESULT_VIEW", nullptr));
+        labelNum1->setText(QCoreApplication::translate("MainMenu", "Number 1", nullptr));
+        labelNum2->setText(QCoreApplication::translate("MainMenu", "Number 2", nullptr));
+        btnPlus->setText(QCoreApplication::translate("MainMenu", "Plus (+)", nullptr));
+        btnMinus->setText(QCoreApplication::translate("MainMenu", "Minus (-)", nullptr));
+        btnMultiply->setText(QCoreApplication::translate("MainMenu", "Multiply (*)", nullptr));
+        btnDivision->setText(QCoreApplication::translate("MainMenu", "Division (/)", nullptr));
     } // retranslateUi
 
 };
