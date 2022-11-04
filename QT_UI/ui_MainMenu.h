@@ -26,11 +26,14 @@ public:
     QVBoxLayout *layoutRight;
     QLabel *labelResult;
     QWidget *layoutLeftContainer;
-    QVBoxLayout *layoutLeft;
+    QWidget *layoutLeftInputContainer;
+    QVBoxLayout *layoutLeftInput;
     QLabel *labelNum1;
     QLineEdit *inputNum1;
     QLabel *labelNum2;
     QLineEdit *inputNum2;
+    QWidget *layoutLeftBtnContainer;
+    QVBoxLayout *layoutLeftBtn;
     QPushButton *btnPlus;
     QPushButton *btnMinus;
     QPushButton *btnMultiply;
@@ -40,10 +43,10 @@ public:
     {
         if (MainMenu->objectName().isEmpty())
             MainMenu->setObjectName(QString::fromUtf8("MainMenu"));
-        MainMenu->resize(800, 400);
+        MainMenu->resize(800, 300);
         layoutRightContainer = new QWidget(MainMenu);
         layoutRightContainer->setObjectName(QString::fromUtf8("layoutRightContainer"));
-        layoutRightContainer->setGeometry(QRect(400, 0, 400, 400));
+        layoutRightContainer->setGeometry(QRect(400, 0, 400, 300));
         layoutRight = new QVBoxLayout(layoutRightContainer);
         layoutRight->setObjectName(QString::fromUtf8("layoutRight"));
         layoutRight->setContentsMargins(0, 0, 0, 0);
@@ -54,49 +57,58 @@ public:
 
         layoutLeftContainer = new QWidget(MainMenu);
         layoutLeftContainer->setObjectName(QString::fromUtf8("layoutLeftContainer"));
-        layoutLeftContainer->setGeometry(QRect(0, 0, 400, 400));
-        layoutLeft = new QVBoxLayout(layoutLeftContainer);
-        layoutLeft->setObjectName(QString::fromUtf8("layoutLeft"));
-        layoutLeft->setContentsMargins(0, 0, 0, 0);
-        labelNum1 = new QLabel(layoutLeftContainer);
+        layoutLeftContainer->setGeometry(QRect(0, 0, 400, 300));
+        layoutLeftInputContainer = new QWidget(layoutLeftContainer);
+        layoutLeftInputContainer->setObjectName(QString::fromUtf8("layoutLeftInputContainer"));
+        layoutLeftInputContainer->setGeometry(QRect(0, 0, 400, 100));
+        layoutLeftInput = new QVBoxLayout(layoutLeftInputContainer);
+        layoutLeftInput->setObjectName(QString::fromUtf8("layoutLeftInput"));
+        layoutLeftInput->setContentsMargins(0, 0, 0, 0);
+        labelNum1 = new QLabel(layoutLeftInputContainer);
         labelNum1->setObjectName(QString::fromUtf8("labelNum1"));
 
-        layoutLeft->addWidget(labelNum1);
+        layoutLeftInput->addWidget(labelNum1);
 
-        inputNum1 = new QLineEdit(layoutLeftContainer);
+        inputNum1 = new QLineEdit(layoutLeftInputContainer);
         inputNum1->setObjectName(QString::fromUtf8("inputNum1"));
 
-        layoutLeft->addWidget(inputNum1);
+        layoutLeftInput->addWidget(inputNum1);
 
-        labelNum2 = new QLabel(layoutLeftContainer);
+        labelNum2 = new QLabel(layoutLeftInputContainer);
         labelNum2->setObjectName(QString::fromUtf8("labelNum2"));
 
-        layoutLeft->addWidget(labelNum2);
+        layoutLeftInput->addWidget(labelNum2);
 
-        inputNum2 = new QLineEdit(layoutLeftContainer);
+        inputNum2 = new QLineEdit(layoutLeftInputContainer);
         inputNum2->setObjectName(QString::fromUtf8("inputNum2"));
 
-        layoutLeft->addWidget(inputNum2);
+        layoutLeftInput->addWidget(inputNum2);
 
-        btnPlus = new QPushButton(layoutLeftContainer);
+        layoutLeftBtnContainer = new QWidget(layoutLeftContainer);
+        layoutLeftBtnContainer->setObjectName(QString::fromUtf8("layoutLeftBtnContainer"));
+        layoutLeftBtnContainer->setGeometry(QRect(0, 150, 400, 150));
+        layoutLeftBtn = new QVBoxLayout(layoutLeftBtnContainer);
+        layoutLeftBtn->setObjectName(QString::fromUtf8("layoutLeftBtn"));
+        layoutLeftBtn->setContentsMargins(0, 0, 0, 0);
+        btnPlus = new QPushButton(layoutLeftBtnContainer);
         btnPlus->setObjectName(QString::fromUtf8("btnPlus"));
 
-        layoutLeft->addWidget(btnPlus);
+        layoutLeftBtn->addWidget(btnPlus);
 
-        btnMinus = new QPushButton(layoutLeftContainer);
+        btnMinus = new QPushButton(layoutLeftBtnContainer);
         btnMinus->setObjectName(QString::fromUtf8("btnMinus"));
 
-        layoutLeft->addWidget(btnMinus);
+        layoutLeftBtn->addWidget(btnMinus);
 
-        btnMultiply = new QPushButton(layoutLeftContainer);
+        btnMultiply = new QPushButton(layoutLeftBtnContainer);
         btnMultiply->setObjectName(QString::fromUtf8("btnMultiply"));
 
-        layoutLeft->addWidget(btnMultiply);
+        layoutLeftBtn->addWidget(btnMultiply);
 
-        btnDivision = new QPushButton(layoutLeftContainer);
+        btnDivision = new QPushButton(layoutLeftBtnContainer);
         btnDivision->setObjectName(QString::fromUtf8("btnDivision"));
 
-        layoutLeft->addWidget(btnDivision);
+        layoutLeftBtn->addWidget(btnDivision);
 
 
         retranslateUi(MainMenu);
