@@ -546,3 +546,8 @@ inf_int inf_int::pow(const unsigned int exponent){
 
     return result;
 }
+
+char* inf_int::getResultChar() {
+    char* returnVal;
+    return returnVal;
+}
