@@ -562,3 +562,16 @@ inf_int inf_int::pow(const unsigned int exponent) {
 
     return result;
 }
+
+string inf_int::getResultChar() {
+    string returnVal = "";
+
+    if (this->thesign == false){
+        returnVal += '-';
+    }
+    for (int i = this->length - 1; i >= 0; i--){
+        returnVal += this->digits[i];
+    }
+
+    return returnVal;
+}
