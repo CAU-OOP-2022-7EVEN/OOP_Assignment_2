@@ -25,7 +25,7 @@ public:
     QWidget *layoutRightContainer;
     QWidget *layoutRightImageContainer;
     QVBoxLayout *layoutRightImage;
-    QLabel *labelResult1;
+    QLabel *labelImage;
     QWidget *layoutRightResultContainer;
     QVBoxLayout *layoutRightResult;
     QLabel *labelResult;
@@ -57,10 +57,10 @@ public:
         layoutRightImage = new QVBoxLayout(layoutRightImageContainer);
         layoutRightImage->setObjectName(QString::fromUtf8("layoutRightImage"));
         layoutRightImage->setContentsMargins(0, 0, 0, 0);
-        labelResult1 = new QLabel(layoutRightImageContainer);
-        labelResult1->setObjectName(QString::fromUtf8("labelResult1"));
+        labelImage = new QLabel(layoutRightImageContainer);
+        labelImage->setObjectName(QString::fromUtf8("labelImage"));
 
-        layoutRightImage->addWidget(labelResult1);
+        layoutRightImage->addWidget(labelImage);
 
         layoutRightResultContainer = new QWidget(layoutRightContainer);
         layoutRightResultContainer->setObjectName(QString::fromUtf8("layoutRightResultContainer"));
@@ -137,7 +137,6 @@ public:
     void retranslateUi(QWidget *MainMenu)
     {
         MainMenu->setWindowTitle(QCoreApplication::translate("MainMenu", "MainMenu", nullptr));
-        labelResult1->setText(QCoreApplication::translate("MainMenu", "Wa! Sans! RESULT_VIEW", nullptr));
         labelResult->setText(QCoreApplication::translate("MainMenu", "Wa! Sans! RESULT_VIEW", nullptr));
         labelNum1->setText(QCoreApplication::translate("MainMenu", "Number 1", nullptr));
         labelNum2->setText(QCoreApplication::translate("MainMenu", "Number 2", nullptr));

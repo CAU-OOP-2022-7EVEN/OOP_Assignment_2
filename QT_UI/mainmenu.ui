@@ -34,9 +34,6 @@
                 <layout class="QVBoxLayout" name="layoutRightImage">
                     <item>
                         <widget class="QLabel" name="labelImage">
-                            <property name="text">
-                                <string>Wa! Sans! RESULT_VIEW</string>
-                            </property>
                         </widget>
                     </item>
                 </layout>
