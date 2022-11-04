@@ -324,26 +324,31 @@ inf_int operator/(const inf_int& a, const inf_int& b)
         return c;
     else if (a.length == b.length)
     {
-        if (a < b)
+        // a, b 양수로 바꿔줌
+        inf_int dividend(a);
+        inf_int divisor(b);
+        dividend.thesign = true;
+        divisor.thesign = true;
+
+        if (dividend < divisor)
         {
             // 예) 4567 / 4568 = 0 (나머지 : 4567)
             return c;
         }
         else
         {
-            inf_int q(a);
-            q.thesign = true;
+            int subQ = 0;
             // 예) -4567 / 1111 = -4 (나머지 : -123)
             // 4567 / 1111 먼저 계산하고 부호 처리
             // 몫이 1의 자리만 나온다. 피제수에서 제수를 뺄 수 있을만큼 빼고, 뺀 횟수만큼 Add 함수를 통해 카운트해준다.
-            while (q > b || q == b)
+            while ( dividend > divisor || dividend == divisor)
             {
-                for (int i = a.length - 1; i >= 0; i--)
-                {
-                    q.Sub(b.digits[i], i + 1);
-                }
-                c.Add('1', 1);
+                dividend = dividend - divisor;
+
+                subQ++;
             }
+
+            c = inf_int(subQ);
             c.length = 1;
             c.thesign = (a.thesign == b.thesign ? true : false);
             return c;
@@ -354,31 +359,38 @@ inf_int operator/(const inf_int& a, const inf_int& b)
         // 제수를 지속적으로 빼줄 가변적 피제수
         // ex) 456789 / 1111
         // q -> 345689, 234589, 123489, 11189, 79로 변화
-        inf_int q(a);
+        inf_int dividend(a);
+        dividend.thesign = true;
+        char buf[100000];
+        int resultLength = 0;
 
         for (int i = a.length - b.length + 1; i >= 1; i--) {
-            // subInfInt for subtraction 각 자리수 마다
             // ex) 456789 / 1111
-            // operand -> 111100, 11110
+            // divisor -> 111100, 11110
 
-            // inf_int operand = q.subInfInt(i, i + b.length);
-
-            inf_int operand = b * inf_int(10).pow(i - 1);
+            inf_int divisor = b * inf_int(10).pow(i - 1);
+            divisor.thesign = true;
             int subQ = 0;
-
-            while (q > operand || q == operand) {
-                q = q - operand;
+            
+            while (dividend > divisor || dividend == divisor) {
+                dividend = dividend - divisor;
 
                 subQ++;
             }
 
-            if (subQ == 0)
+            // 첫번째로 0이 나오면 건너뛰고 
+            // 아니면 '0'을 버퍼에 넣어줌
+            if (subQ == 0 && resultLength == 0)
                 continue;
 
             // 각 자리 몫이 나오면, 해당 자리에 넣어줌.
-            c.Add(subQ, i);
+            buf[resultLength++] = subQ + '0';
         }
 
+        buf[resultLength] = '\0';
+
+        c = inf_int(buf);
+        c.length = resultLength;
         c.thesign = (a.thesign == b.thesign ? true : false);
         return c;
     }
