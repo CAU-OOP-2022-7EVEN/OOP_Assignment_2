@@ -11,3 +11,7 @@ Makefile
 
 CMakeCache.txt
 OOP_Assignment_2
+
+.vs/
+x64/
+x86/
