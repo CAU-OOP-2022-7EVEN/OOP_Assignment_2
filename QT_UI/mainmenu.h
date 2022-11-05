@@ -16,6 +16,8 @@ public:
 
     ~MainMenu() override;
 
+    bool sansFlag = false;
+
 private:
     QPixmap sansPixmap[2];
 
