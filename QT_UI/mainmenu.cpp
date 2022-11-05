@@ -8,6 +8,13 @@ MainMenu::MainMenu(QWidget *parent) :
         QWidget(parent), ui(new Ui::MainMenu) {
     ui->setupUi(this);
 
+    QPalette rightPalette = QPalette();
+    rightPalette.setColor(QPalette::Window, Qt::black);
+    ui->layoutRightImageContainer->setAutoFillBackground(true);
+    ui->layoutRightImageContainer->setPalette(rightPalette);
+
+    ui->labelResult->setWordWrap(true);
+
     sansPixmap[0].load(":/images/sans_1.png");
     sansPixmap[1].load(":/images/sans_2.png");
     sansPixmap[2].load(":/images/sans_err.png");
