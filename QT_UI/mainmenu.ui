@@ -51,7 +51,7 @@
                     <item>
                         <widget class="QLabel" name="labelResult">
                             <property name="text">
-                                <string>Wa! Sans! RESULT_VIEW</string>
+                                <string>Wa! Sans!</string>
                             </property>
                         </widget>
                     </item>

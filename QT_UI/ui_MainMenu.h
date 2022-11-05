@@ -137,7 +137,7 @@ public:
     void retranslateUi(QWidget *MainMenu)
     {
         MainMenu->setWindowTitle(QCoreApplication::translate("MainMenu", "MainMenu", nullptr));
-        labelResult->setText(QCoreApplication::translate("MainMenu", "Wa! Sans! RESULT_VIEW", nullptr));
+        labelResult->setText(QCoreApplication::translate("MainMenu", "Wa! Sans!", nullptr));
         labelNum1->setText(QCoreApplication::translate("MainMenu", "Number 1", nullptr));
         labelNum2->setText(QCoreApplication::translate("MainMenu", "Number 2", nullptr));
         btnPlus->setText(QCoreApplication::translate("MainMenu", "Plus (+)", nullptr));
