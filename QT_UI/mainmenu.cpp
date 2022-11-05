@@ -131,17 +131,34 @@ void MainMenu::on_btnDivision_clicked() {
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 / num2;
 
-        string strResult = "";
-        string strResultBase = numResult.getResultChar();
-        for(int i = 1; i <= strResultBase.size(); i++){
-            strResult += strResultBase[i - 1];
-            if(!(i % 60)){
-                strResult += "\n";
-            }
-        }
-        ui->labelResult->setText(QString(strResult.c_str()));
+        string strResult;
+        if(numResult.getResultChar() != "NaN"){
+            updateSans(false);
 
-        updateSans(false);
+            string strResultBase = numResult.getResultChar();
+            for(int i = 1; i <= strResultBase.size(); i++){
+                strResult += strResultBase[i - 1];
+                if(!(i % 60)){
+                    strResult += "\n";
+                }
+            }
+
+            string strResultMod = (num1 % num2).getResultChar();
+            if(strResultMod != "0"){
+                strResult += "\nMOD : ";
+                for(int i = 1; i <= strResultMod.size(); i++){
+                    strResult += strResultMod[i - 1];
+                    if(!(i % 60)){
+                        strResult += "\n";
+                    }
+                }
+            }
+        }else{
+            strResult = numResult.getResultChar();
+            updateSans(true);
+        }
+
+        ui->labelResult->setText(QString(strResult.c_str()));
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
