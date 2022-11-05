@@ -142,6 +142,17 @@ void MainMenu::on_btnDivision_clicked() {
                     strResult += "\n";
                 }
             }
+
+            string strResultMod = (num1 % num2).getResultChar();
+            if(strResultMod != "0"){
+                strResult += "\nMOD : ";
+                for(int i = 1; i <= strResultMod.size(); i++){
+                    strResult += strResultMod[i - 1];
+                    if(!(i % 60)){
+                        strResult += "\n";
+                    }
+                }
+            }
         }else{
             strResult = numResult.getResultChar();
             updateSans(true);
