@@ -19,6 +19,21 @@ MainMenu::~MainMenu() {
     delete ui;
 }
 
+bool checkValue(string input) {
+    if(input.empty()){
+        return false;
+    }
+
+    for(int i = 0; i < input.size(); i++){
+        int cur = input[i] - '0';
+        if(cur > 57 || cur < 48){
+            return false;
+        }
+    }
+
+    return true;
+}
+
 void MainMenu::on_btnPlus_clicked() {
     inf_int num1(ui->inputNum1->text().toStdString().c_str());
     inf_int num2(ui->inputNum2->text().toStdString().c_str());
