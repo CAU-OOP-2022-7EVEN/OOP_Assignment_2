@@ -12,7 +12,7 @@ MainMenu::MainMenu(QWidget *parent) :
     sansPixmap[1].load(":/images/sans_2.png");
     sansPixmap[2].load(":/images/sans_err.png");
 
-    updateSans();
+    updateSans(false);
 }
 
 MainMenu::~MainMenu() {
@@ -44,11 +44,11 @@ void MainMenu::on_btnPlus_clicked() {
         inf_int numResult = num1 + num2;
         ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-        updateSans();
+        updateSans(false);
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
-        updateSans();
+        updateSans(true);
     }
 }
 
@@ -62,11 +62,11 @@ void MainMenu::on_btnMinus_clicked() {
         inf_int numResult = num1 - num2;
         ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-        updateSans();
+        updateSans(false);
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
-        updateSans();
+        updateSans(true);
     }
 }
 
@@ -80,11 +80,11 @@ void MainMenu::on_btnMultiply_clicked() {
         inf_int numResult = num1 * num2;
         ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-        updateSans();
+        updateSans(false);
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
-        updateSans();
+        updateSans(true);
     }
 }
 
@@ -98,15 +98,19 @@ void MainMenu::on_btnDivision_clicked() {
         inf_int numResult = num1 / num2;
         ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-        updateSans();
+        updateSans(false);
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
-        updateSans();
+        updateSans(true);
     }
 }
 
-void MainMenu::updateSans() {
+void MainMenu::updateSans(bool isError) {
+    if(isError){
+        ui->labelImage->setPixmap(sansPixmap[2].scaled(200, 200, Qt::KeepAspectRatio));
+    }
+
     if(sansFlag){
         sansFlag = false;
         ui->labelImage->setPixmap(sansPixmap[0].scaled(200, 200, Qt::KeepAspectRatio));
