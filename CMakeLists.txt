@@ -12,6 +12,6 @@ set(CMAKE_AUTORCC ON)
 
 find_package(Qt5Widgets REQUIRED)
 
-add_executable(OOP_Assignment_2 main.cpp inf_int.cpp UIManager.cpp UIManager.h UIManager.cpp UIManager.h QT_UI/mainmenu.cpp QT_UI/mainmenu.h QT_UI/mainmenu.ui resources/resources.qrc)
+add_executable(OOP_Assignment_2 main.cpp inf_int.cpp inf_int_test.cpp UIManager.cpp UIManager.h UIManager.cpp UIManager.h QT_UI/mainmenu.cpp QT_UI/mainmenu.h QT_UI/mainmenu.ui resources/resources.qrc)
 
 target_link_libraries(OOP_Assignment_2 Qt5::Widgets)
