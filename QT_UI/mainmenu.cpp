@@ -5,14 +5,13 @@
 
 
 MainMenu::MainMenu(QWidget *parent) :
-        QWidget(parent), ui(new Ui::MainMenu) {
+        QWidget(parent), ui(new Ui::MainMenu){
     ui->setupUi(this);
 
     QPalette rightPalette = QPalette();
     rightPalette.setColor(QPalette::Window, Qt::black);
     ui->layoutRightImageContainer->setAutoFillBackground(true);
     ui->layoutRightImageContainer->setPalette(rightPalette);
-
     ui->labelResult->setWordWrap(true);
 
     sansPixmap[0].load(":/images/sans_1.png");
@@ -22,17 +21,17 @@ MainMenu::MainMenu(QWidget *parent) :
     updateSans(false);
 }
 
-MainMenu::~MainMenu() {
+MainMenu::~MainMenu(){
     delete ui;
 }
 
-bool checkValue(string input) {
+bool checkValue(string input){
     if(input.empty()){
         return false;
     }
 
-    for(int i = 0; i < input.size(); i++){
-        int cur = input[i] - '0';
+    for(char i : input){
+        int cur = i - '0';
         if(cur < 0 || cur > 9){
             return false;
         }
@@ -41,7 +40,7 @@ bool checkValue(string input) {
     return true;
 }
 
-void MainMenu::on_btnPlus_clicked() {
+void MainMenu::on_btnPlus_clicked(){
     string inputNum1 = ui->inputNum1->text().toStdString();
     string inputNum2 = ui->inputNum2->text().toStdString();
 
@@ -50,7 +49,7 @@ void MainMenu::on_btnPlus_clicked() {
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 + num2;
 
-        string strResult = "";
+        string strResult;
         string strResultBase = numResult.getResultChar();
         for(int i = 1; i <= strResultBase.size(); i++){
             strResult += strResultBase[i - 1];
@@ -68,7 +67,7 @@ void MainMenu::on_btnPlus_clicked() {
     }
 }
 
-void MainMenu::on_btnMinus_clicked() {
+void MainMenu::on_btnMinus_clicked(){
     string inputNum1 = ui->inputNum1->text().toStdString();
     string inputNum2 = ui->inputNum2->text().toStdString();
 
@@ -77,7 +76,7 @@ void MainMenu::on_btnMinus_clicked() {
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 - num2;
 
-        string strResult = "";
+        string strResult;
         string strResultBase = numResult.getResultChar();
         for(int i = 1; i <= strResultBase.size(); i++){
             strResult += strResultBase[i - 1];
@@ -95,7 +94,7 @@ void MainMenu::on_btnMinus_clicked() {
     }
 }
 
-void MainMenu::on_btnMultiply_clicked() {
+void MainMenu::on_btnMultiply_clicked(){
     string inputNum1 = ui->inputNum1->text().toStdString();
     string inputNum2 = ui->inputNum2->text().toStdString();
 
@@ -104,7 +103,7 @@ void MainMenu::on_btnMultiply_clicked() {
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 * num2;
 
-        string strResult = "";
+        string strResult;
         string strResultBase = numResult.getResultChar();
         for(int i = 1; i <= strResultBase.size(); i++){
             strResult += strResultBase[i - 1];
@@ -122,7 +121,7 @@ void MainMenu::on_btnMultiply_clicked() {
     }
 }
 
-void MainMenu::on_btnDivision_clicked() {
+void MainMenu::on_btnDivision_clicked(){
     string inputNum1 = ui->inputNum1->text().toStdString();
     string inputNum2 = ui->inputNum2->text().toStdString();
 
@@ -166,7 +165,7 @@ void MainMenu::on_btnDivision_clicked() {
     }
 }
 
-void MainMenu::updateSans(bool isError) {
+void MainMenu::updateSans(bool isError){
     if(isError){
         ui->labelImage->setPixmap(sansPixmap[2].scaled(200, 200, Qt::KeepAspectRatio));
         return;
