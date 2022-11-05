@@ -342,6 +342,18 @@ inf_int operator/(const inf_int& a, const inf_int& b)
 {
     inf_int c;
 
+    // ZERO-Division
+    if(b.length == 1 && b.digits[0] == '0'){
+        c.digits = new char[4];
+        c.digits[0] = 'N';
+        c.digits[1] = 'a';
+        c.digits[2] = 'N';
+        c.digits[3] = '\0';
+        c.length = 3;
+        c.thesign = true;
+        return c;
+    }
+
     // 제수의 길이가 피제수의 길이보다 길면, 몫을 '0'로 반환한다.
     // 예) 4567 / 23456 = 0 (나머지 : 4567)
     if (a.length < b.length)
