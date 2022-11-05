@@ -26,7 +26,7 @@ bool checkValue(string input) {
 
     for(int i = 0; i < input.size(); i++){
         int cur = input[i] - '0';
-        if(cur > 57 || cur < 48){
+        if(cur < 0 || cur > 9){
             return false;
         }
     }
@@ -35,12 +35,12 @@ bool checkValue(string input) {
 }
 
 void MainMenu::on_btnPlus_clicked() {
-    string inputNum1 = ui->inputNum1->text().toStdString().c_str();
-    string inputNum2 = ui->inputNum2->text().toStdString().c_str();
+    string inputNum1 = ui->inputNum1->text().toStdString();
+    string inputNum2 = ui->inputNum2->text().toStdString();
 
     if(checkValue(inputNum1) && checkValue(inputNum2)){
-        inf_int num1(ui->inputNum1->text().toStdString().c_str());
-        inf_int num2(ui->inputNum2->text().toStdString().c_str());
+        inf_int num1(inputNum1.c_str());
+        inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 + num2;
         ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
@@ -53,12 +53,12 @@ void MainMenu::on_btnPlus_clicked() {
 }
 
 void MainMenu::on_btnMinus_clicked() {
-    string inputNum1 = ui->inputNum1->text().toStdString().c_str();
-    string inputNum2 = ui->inputNum2->text().toStdString().c_str();
+    string inputNum1 = ui->inputNum1->text().toStdString();
+    string inputNum2 = ui->inputNum2->text().toStdString();
 
     if(checkValue(inputNum1) && checkValue(inputNum2)){
-        inf_int num1(ui->inputNum1->text().toStdString().c_str());
-        inf_int num2(ui->inputNum2->text().toStdString().c_str());
+        inf_int num1(inputNum1.c_str());
+        inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 - num2;
         ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
@@ -71,12 +71,12 @@ void MainMenu::on_btnMinus_clicked() {
 }
 
 void MainMenu::on_btnMultiply_clicked() {
-    string inputNum1 = ui->inputNum1->text().toStdString().c_str();
-    string inputNum2 = ui->inputNum2->text().toStdString().c_str();
+    string inputNum1 = ui->inputNum1->text().toStdString();
+    string inputNum2 = ui->inputNum2->text().toStdString();
 
     if(checkValue(inputNum1) && checkValue(inputNum2)){
-        inf_int num1(ui->inputNum1->text().toStdString().c_str());
-        inf_int num2(ui->inputNum2->text().toStdString().c_str());
+        inf_int num1(inputNum1.c_str());
+        inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 * num2;
         ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
@@ -89,12 +89,12 @@ void MainMenu::on_btnMultiply_clicked() {
 }
 
 void MainMenu::on_btnDivision_clicked() {
-    string inputNum1 = ui->inputNum1->text().toStdString().c_str();
-    string inputNum2 = ui->inputNum2->text().toStdString().c_str();
+    string inputNum1 = ui->inputNum1->text().toStdString();
+    string inputNum2 = ui->inputNum2->text().toStdString();
 
     if(checkValue(inputNum1) && checkValue(inputNum2)){
-        inf_int num1(ui->inputNum1->text().toStdString().c_str());
-        inf_int num2(ui->inputNum2->text().toStdString().c_str());
+        inf_int num1(inputNum1.c_str());
+        inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 / num2;
         ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
