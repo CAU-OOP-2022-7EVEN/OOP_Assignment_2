@@ -46,7 +46,7 @@ void MainMenu::on_btnPlus_clicked() {
 
         updateSans();
     }else{
-        ui->labelResult->setText(QString("ERROR"));
+        ui->labelResult->setText(QString("Wrong Input"));
 
         updateSans();
     }
@@ -64,7 +64,7 @@ void MainMenu::on_btnMinus_clicked() {
 
         updateSans();
     }else{
-        ui->labelResult->setText(QString("ERROR"));
+        ui->labelResult->setText(QString("Wrong Input"));
 
         updateSans();
     }
@@ -82,7 +82,7 @@ void MainMenu::on_btnMultiply_clicked() {
 
         updateSans();
     }else{
-        ui->labelResult->setText(QString("ERROR"));
+        ui->labelResult->setText(QString("Wrong Input"));
 
         updateSans();
     }
@@ -100,7 +100,7 @@ void MainMenu::on_btnDivision_clicked() {
 
         updateSans();
     }else{
-        ui->labelResult->setText(QString("ERROR"));
+        ui->labelResult->setText(QString("Wrong Input"));
 
         updateSans();
     }
