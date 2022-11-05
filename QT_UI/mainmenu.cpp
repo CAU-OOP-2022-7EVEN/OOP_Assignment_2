@@ -10,6 +10,7 @@ MainMenu::MainMenu(QWidget *parent) :
 
     sansPixmap[0].load(":/images/sans_1.png");
     sansPixmap[1].load(":/images/sans_2.png");
+    sansPixmap[2].load(":/images/sans_err.png");
 
     updateSans();
 }

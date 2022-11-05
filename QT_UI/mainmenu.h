@@ -20,7 +20,7 @@ public:
 
 private:
     bool sansFlag = true;
-    QPixmap sansPixmap[2];
+    QPixmap sansPixmap[3];
 
     Ui::MainMenu *ui;
 
