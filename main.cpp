@@ -10,8 +10,8 @@ int main(int argc, char** argv){
     cout.tie(0);
     ios_base::sync_with_stdio(false);
 
-    inf_int_test::TestDefault();
-    inf_int_test::TestOperate100digitsWith50digits();
+//    inf_int_test::TestDefault();
+//    inf_int_test::TestOperate100digitsWith50digits();
 
     openMainMenu(argc, argv);
 
