@@ -139,13 +139,14 @@ void MainMenu::on_btnDivision_clicked() {
                 strResult += "\n";
             }
         }
-        ui->labelResult->setText(QString(strResult.c_str()));
 
         if(numResult.getResultChar() != "NaN"){
             updateSans(false);
         }else{
             updateSans(true);
         }
+
+        ui->labelResult->setText(QString(strResult.c_str()));
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
