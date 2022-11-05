@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+    <class>MainMenu</class>
+    <widget class="QWidget" name="MainMenu">
+        <property name="geometry">
+            <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>800</width>
+                <height>300</height>
+            </rect>
+        </property>
+        <property name="windowTitle">
+            <string>MainMenu</string>
+        </property>
+        <widget class="QWidget" name="layoutRightContainer">
+            <property name="geometry">
+                <rect>
+                    <x>400</x>
+                    <y>0</y>
+                    <width>400</width>
+                    <height>300</height>
+                </rect>
+            </property>
+            <widget class="QWidget" name="layoutRightImageContainer">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>400</width>
+                        <height>200</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="layoutRightImage">
+                    <item>
+                        <widget class="QLabel" name="labelImage">
+                        </widget>
+                    </item>
+                </layout>
+            </widget>
+            <widget class="QWidget" name="layoutRightResultContainer">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>200</y>
+                        <width>400</width>
+                        <height>100</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="layoutRightResult">
+                    <item>
+                        <widget class="QLabel" name="labelResult">
+                            <property name="text">
+                                <string>Wa! Sans! RESULT_VIEW</string>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </widget>
+        </widget>
+        <widget class="QWidget" name="layoutLeftContainer">
+            <property name="geometry">
+                <rect>
+                    <x>0</x>
+                    <y>0</y>
+                    <width>400</width>
+                    <height>300</height>
+                </rect>
+            </property>
+            <widget class="QWidget" name="layoutLeftInputContainer">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>0</y>
+                        <width>400</width>
+                        <height>100</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="layoutLeftInput">
+                    <item>
+                        <widget class="QLabel" name="labelNum1">
+                            <property name="text">
+                                <string>Number 1</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QLineEdit" name="inputNum1"/>
+                    </item>
+                    <item>
+                        <widget class="QLabel" name="labelNum2">
+                            <property name="text">
+                                <string>Number 2</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QLineEdit" name="inputNum2"/>
+                    </item>
+                </layout>
+            </widget>
+            <widget class="QWidget" name="layoutLeftBtnContainer">
+                <property name="geometry">
+                    <rect>
+                        <x>0</x>
+                        <y>150</y>
+                        <width>400</width>
+                        <height>150</height>
+                    </rect>
+                </property>
+                <layout class="QVBoxLayout" name="layoutLeftBtn">
+                    <item>
+                        <widget class="QPushButton" name="btnPlus">
+                            <property name="text">
+                                <string>Plus (+)</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="btnMinus">
+                            <property name="text">
+                                <string>Minus (-)</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="btnMultiply">
+                            <property name="text">
+                                <string>Multiply (*)</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item>
+                        <widget class="QPushButton" name="btnDivision">
+                            <property name="text">
+                                <string>Division (/)</string>
+                            </property>
+                        </widget>
+                    </item>
+                </layout>
+            </widget>
+        </widget>
+    </widget>
+    <resources/>
+    <connections/>
+</ui>
