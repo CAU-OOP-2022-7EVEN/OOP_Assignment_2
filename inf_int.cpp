@@ -223,6 +223,14 @@ inf_int operator-(const inf_int& a, const inf_int& b)   //코드 최적화 필�
     inf_int c;
     unsigned int i;
 
+    if (a.thesign == b.thesign && !strcmp(a.digits, b.digits)){
+        // 두 수가 동일한 경우
+        c.Add(0, 1);
+        c.thesign = true;
+
+        return c;
+    }
+
     if (a.thesign == b.thesign && a.thesign == true)
     { // 이항의 부호가 양수로 같을 경우
         if (a > b || a == b) {      //a의 절댓값이 b보다 크거나 같을 때
