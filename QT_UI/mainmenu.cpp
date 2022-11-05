@@ -49,7 +49,16 @@ void MainMenu::on_btnPlus_clicked() {
         inf_int num1(inputNum1.c_str());
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 + num2;
-        ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
+
+        string strResult = "";
+        string strResultBase = numResult.getResultChar();
+        for(int i = 1; i <= strResultBase.size(); i++){
+            strResult += strResultBase[i];
+            if(!(i % 60)){
+                strResult += "\n";
+            }
+        }
+        ui->labelResult->setText(QString(strResult.c_str()));
 
         updateSans(false);
     }else{
@@ -67,7 +76,16 @@ void MainMenu::on_btnMinus_clicked() {
         inf_int num1(inputNum1.c_str());
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 - num2;
-        ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
+
+        string strResult = "";
+        string strResultBase = numResult.getResultChar();
+        for(int i = 1; i <= strResultBase.size(); i++){
+            strResult += strResultBase[i];
+            if(!(i % 60)){
+                strResult += "\n";
+            }
+        }
+        ui->labelResult->setText(QString(strResult.c_str()));
 
         updateSans(false);
     }else{
@@ -85,7 +103,16 @@ void MainMenu::on_btnMultiply_clicked() {
         inf_int num1(inputNum1.c_str());
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 * num2;
-        ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
+
+        string strResult = "";
+        string strResultBase = numResult.getResultChar();
+        for(int i = 1; i <= strResultBase.size(); i++){
+            strResult += strResultBase[i];
+            if(!(i % 60)){
+                strResult += "\n";
+            }
+        }
+        ui->labelResult->setText(QString(strResult.c_str()));
 
         updateSans(false);
     }else{
@@ -103,7 +130,16 @@ void MainMenu::on_btnDivision_clicked() {
         inf_int num1(inputNum1.c_str());
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 / num2;
-        ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
+
+        string strResult = "";
+        string strResultBase = numResult.getResultChar();
+        for(int i = 1; i <= strResultBase.size(); i++){
+            strResult += strResultBase[i];
+            if(!(i % 60)){
+                strResult += "\n";
+            }
+        }
+        ui->labelResult->setText(QString(strResult.c_str()));
 
         updateSans(false);
     }else{
