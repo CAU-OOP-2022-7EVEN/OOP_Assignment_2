@@ -16,7 +16,7 @@ public:
 
     ~MainMenu() override;
 
-    void updateSans();
+    void updateSans(bool);
 
 private:
     bool sansFlag = true;

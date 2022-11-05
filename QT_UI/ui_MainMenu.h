@@ -14,6 +14,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -28,6 +29,7 @@ public:
     QLabel *labelImage;
     QWidget *layoutRightResultContainer;
     QVBoxLayout *layoutRightResult;
+    QScrollArea *scrollArea;
     QLabel *labelResult;
     QWidget *layoutLeftContainer;
     QWidget *layoutLeftInputContainer;
@@ -68,10 +70,14 @@ public:
         layoutRightResult = new QVBoxLayout(layoutRightResultContainer);
         layoutRightResult->setObjectName(QString::fromUtf8("layoutRightResult"));
         layoutRightResult->setContentsMargins(0, 0, 0, 0);
-        labelResult = new QLabel(layoutRightResultContainer);
+        scrollArea = new QScrollArea(layoutRightResultContainer);
+        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
+        scrollArea->setWidgetResizable(true);
+        labelResult = new QLabel();
         labelResult->setObjectName(QString::fromUtf8("labelResult"));
+        scrollArea->setWidget(labelResult);
 
-        layoutRightResult->addWidget(labelResult);
+        layoutRightResult->addWidget(scrollArea);
 
         layoutLeftContainer = new QWidget(MainMenu);
         layoutLeftContainer->setObjectName(QString::fromUtf8("layoutLeftContainer"));
@@ -137,7 +143,7 @@ public:
     void retranslateUi(QWidget *MainMenu)
     {
         MainMenu->setWindowTitle(QCoreApplication::translate("MainMenu", "MainMenu", nullptr));
-        labelResult->setText(QCoreApplication::translate("MainMenu", "Wa! Sans! RESULT_VIEW", nullptr));
+        labelResult->setText(QCoreApplication::translate("MainMenu", "Wa! Sans!", nullptr));
         labelNum1->setText(QCoreApplication::translate("MainMenu", "Number 1", nullptr));
         labelNum2->setText(QCoreApplication::translate("MainMenu", "Number 2", nullptr));
         btnPlus->setText(QCoreApplication::translate("MainMenu", "Plus (+)", nullptr));

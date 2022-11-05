@@ -8,11 +8,18 @@ MainMenu::MainMenu(QWidget *parent) :
         QWidget(parent), ui(new Ui::MainMenu) {
     ui->setupUi(this);
 
+    QPalette rightPalette = QPalette();
+    rightPalette.setColor(QPalette::Window, Qt::black);
+    ui->layoutRightImageContainer->setAutoFillBackground(true);
+    ui->layoutRightImageContainer->setPalette(rightPalette);
+
+    ui->labelResult->setWordWrap(true);
+
     sansPixmap[0].load(":/images/sans_1.png");
     sansPixmap[1].load(":/images/sans_2.png");
     sansPixmap[2].load(":/images/sans_err.png");
 
-    updateSans();
+    updateSans(false);
 }
 
 MainMenu::~MainMenu() {
@@ -42,13 +49,22 @@ void MainMenu::on_btnPlus_clicked() {
         inf_int num1(inputNum1.c_str());
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 + num2;
-        ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-        updateSans();
+        string strResult = "";
+        string strResultBase = numResult.getResultChar();
+        for(int i = 1; i <= strResultBase.size(); i++){
+            strResult += strResultBase[i - 1];
+            if(!(i % 60)){
+                strResult += "\n";
+            }
+        }
+        ui->labelResult->setText(QString(strResult.c_str()));
+
+        updateSans(false);
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
-        updateSans();
+        updateSans(true);
     }
 }
 
@@ -60,13 +76,22 @@ void MainMenu::on_btnMinus_clicked() {
         inf_int num1(inputNum1.c_str());
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 - num2;
-        ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-        updateSans();
+        string strResult = "";
+        string strResultBase = numResult.getResultChar();
+        for(int i = 1; i <= strResultBase.size(); i++){
+            strResult += strResultBase[i - 1];
+            if(!(i % 60)){
+                strResult += "\n";
+            }
+        }
+        ui->labelResult->setText(QString(strResult.c_str()));
+
+        updateSans(false);
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
-        updateSans();
+        updateSans(true);
     }
 }
 
@@ -78,13 +103,22 @@ void MainMenu::on_btnMultiply_clicked() {
         inf_int num1(inputNum1.c_str());
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 * num2;
-        ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-        updateSans();
+        string strResult = "";
+        string strResultBase = numResult.getResultChar();
+        for(int i = 1; i <= strResultBase.size(); i++){
+            strResult += strResultBase[i - 1];
+            if(!(i % 60)){
+                strResult += "\n";
+            }
+        }
+        ui->labelResult->setText(QString(strResult.c_str()));
+
+        updateSans(false);
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
-        updateSans();
+        updateSans(true);
     }
 }
 
@@ -96,17 +130,31 @@ void MainMenu::on_btnDivision_clicked() {
         inf_int num1(inputNum1.c_str());
         inf_int num2(inputNum2.c_str());
         inf_int numResult = num1 / num2;
-        ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-        updateSans();
+        string strResult = "";
+        string strResultBase = numResult.getResultChar();
+        for(int i = 1; i <= strResultBase.size(); i++){
+            strResult += strResultBase[i - 1];
+            if(!(i % 60)){
+                strResult += "\n";
+            }
+        }
+        ui->labelResult->setText(QString(strResult.c_str()));
+
+        updateSans(false);
     }else{
         ui->labelResult->setText(QString("Wrong Input"));
 
-        updateSans();
+        updateSans(true);
     }
 }
 
-void MainMenu::updateSans() {
+void MainMenu::updateSans(bool isError) {
+    if(isError){
+        ui->labelImage->setPixmap(sansPixmap[2].scaled(200, 200, Qt::KeepAspectRatio));
+        return;
+    }
+
     if(sansFlag){
         sansFlag = false;
         ui->labelImage->setPixmap(sansPixmap[0].scaled(200, 200, Qt::KeepAspectRatio));
