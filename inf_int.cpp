@@ -249,7 +249,6 @@ inf_int operator-(const inf_int& a, const inf_int& b)   //코드 최적화 필�
 
             c.thesign = !(a.thesign);
         }
-        return c;
     }
     else if (a.thesign == b.thesign && a.thesign == false)
     { // 이항의 부호가 음수로 같을 경우
@@ -277,7 +276,6 @@ inf_int operator-(const inf_int& a, const inf_int& b)   //코드 최적화 필�
 
             c.thesign = !(a.thesign);
         }
-        return c;
     }
     else
     { // 이항의 부호가 다를 경우 + 연산
@@ -290,9 +288,27 @@ inf_int operator-(const inf_int& a, const inf_int& b)   //코드 최적화 필�
             c.Add(b.digits[i], i + 1);
         }
         c.thesign = a.thesign;
-
-        return c;
     }
+
+    /**
+     * @brief c 의 접두로 '0000'이 있을 경우 다지워서 리턴함
+     */
+    int _size = c.length;
+    while(c.digits[_size - 1] == '0'){
+        _size--;
+    }
+
+    char * _digits = new char[_size + 1];
+    for(int idx = _size - 1; idx >= 0; idx--){
+        _digits[idx] = c.digits[idx];
+    }
+    _digits[_size] = '\0';
+
+    c.digits = new char[_size + 1];
+    strcpy(c.digits, _digits);
+    c.length = _size;
+
+    return c;
 }
 
 inf_int operator*(const inf_int& a, const inf_int& b)
@@ -341,7 +357,7 @@ inf_int operator/(const inf_int& a, const inf_int& b)
             // 예) -4567 / 1111 = -4 (나머지 : -123)
             // 4567 / 1111 먼저 계산하고 부호 처리
             // 몫이 1의 자리만 나온다. 피제수에서 제수를 뺄 수 있을만큼 빼고, 뺀 횟수만큼 Add 함수를 통해 카운트해준다.
-            while ( dividend > divisor || dividend == divisor)
+            while (dividend > divisor || dividend == divisor)
             {
                 dividend = dividend - divisor;
 
@@ -371,7 +387,7 @@ inf_int operator/(const inf_int& a, const inf_int& b)
             inf_int divisor = b * inf_int(10).pow(i - 1);
             divisor.thesign = true;
             int subQ = 0;
-            
+
             while (dividend > divisor || dividend == divisor) {
                 dividend = dividend - divisor;
 
@@ -388,10 +404,11 @@ inf_int operator/(const inf_int& a, const inf_int& b)
         }
 
         buf[resultLength] = '\0';
-
+        
         c = inf_int(buf);
         c.length = resultLength;
         c.thesign = (a.thesign == b.thesign ? true : false);
+
         return c;
     }
 
@@ -407,6 +424,9 @@ inf_int operator%(const inf_int& a, const inf_int& b) {
     // c == a - b * Q
     // c == a - b * (a / b) 
     c = a - (b * (a / b));
+    
+    if(c.digits[0] == '\0')
+        return inf_int();
 
     // 나머지의 부호는 '=' 연산에서 처리
     return c;
