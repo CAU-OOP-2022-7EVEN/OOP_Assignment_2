@@ -2,6 +2,6 @@
     <qresource>
         <file>images/sans_1.png</file>
         <file>images/sans_2.png</file>
-        <file>images/sans_3.png</file>
+        <file>images/sans_err.png</file>
     </qresource>
 </RCC>

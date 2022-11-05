@@ -109,6 +109,7 @@ void MainMenu::on_btnDivision_clicked() {
 void MainMenu::updateSans(bool isError) {
     if(isError){
         ui->labelImage->setPixmap(sansPixmap[2].scaled(200, 200, Qt::KeepAspectRatio));
+        return;
     }
 
     if(sansFlag){
