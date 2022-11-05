@@ -53,7 +53,7 @@ void MainMenu::on_btnPlus_clicked() {
         string strResult = "";
         string strResultBase = numResult.getResultChar();
         for(int i = 1; i <= strResultBase.size(); i++){
-            strResult += strResultBase[i];
+            strResult += strResultBase[i - 1];
             if(!(i % 60)){
                 strResult += "\n";
             }
@@ -80,7 +80,7 @@ void MainMenu::on_btnMinus_clicked() {
         string strResult = "";
         string strResultBase = numResult.getResultChar();
         for(int i = 1; i <= strResultBase.size(); i++){
-            strResult += strResultBase[i];
+            strResult += strResultBase[i - 1];
             if(!(i % 60)){
                 strResult += "\n";
             }
@@ -107,7 +107,7 @@ void MainMenu::on_btnMultiply_clicked() {
         string strResult = "";
         string strResultBase = numResult.getResultChar();
         for(int i = 1; i <= strResultBase.size(); i++){
-            strResult += strResultBase[i];
+            strResult += strResultBase[i - 1];
             if(!(i % 60)){
                 strResult += "\n";
             }
@@ -134,7 +134,7 @@ void MainMenu::on_btnDivision_clicked() {
         string strResult = "";
         string strResultBase = numResult.getResultChar();
         for(int i = 1; i <= strResultBase.size(); i++){
-            strResult += strResultBase[i];
+            strResult += strResultBase[i - 1];
             if(!(i % 60)){
                 strResult += "\n";
             }
