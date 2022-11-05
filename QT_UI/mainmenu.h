@@ -16,9 +16,10 @@ public:
 
     ~MainMenu() override;
 
-    bool sansFlag = false;
+    void updateSans();
 
 private:
+    bool sansFlag = true;
     QPixmap sansPixmap[2];
 
     Ui::MainMenu *ui;

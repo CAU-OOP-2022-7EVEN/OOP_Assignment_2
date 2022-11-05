@@ -11,7 +11,7 @@ MainMenu::MainMenu(QWidget *parent) :
     sansPixmap[0].load(":/images/sans_1.png");
     sansPixmap[1].load(":/images/sans_2.png");
 
-    ui->labelImage->setPixmap(sansPixmap[0].scaled(200, 200, Qt::KeepAspectRatio));
+    updateSans();
 }
 
 MainMenu::~MainMenu() {
@@ -24,7 +24,7 @@ void MainMenu::on_btnPlus_clicked() {
     inf_int numResult = num1 + num2;
     ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-    ui->labelImage->setPixmap(sansPixmap[1].scaled(200, 200, Qt::KeepAspectRatio));
+    updateSans();
 }
 
 void MainMenu::on_btnMinus_clicked() {
@@ -33,7 +33,7 @@ void MainMenu::on_btnMinus_clicked() {
     inf_int numResult = num1 - num2;
     ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-    ui->labelImage->setPixmap(sansPixmap[1].scaled(200, 200, Qt::KeepAspectRatio));
+    updateSans();
 }
 
 void MainMenu::on_btnMultiply_clicked() {
@@ -42,7 +42,7 @@ void MainMenu::on_btnMultiply_clicked() {
     inf_int numResult = num1 * num2;
     ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-    ui->labelImage->setPixmap(sansPixmap[1].scaled(200, 200, Qt::KeepAspectRatio));
+    updateSans();
 }
 
 void MainMenu::on_btnDivision_clicked() {
@@ -51,5 +51,15 @@ void MainMenu::on_btnDivision_clicked() {
     inf_int numResult = num1 / num2;
     ui->labelResult->setText(QString(numResult.getResultChar().c_str()));
 
-    ui->labelImage->setPixmap(sansPixmap[1].scaled(200, 200, Qt::KeepAspectRatio));
+    updateSans();
+}
+
+void MainMenu::updateSans() {
+    if(sansFlag){
+        sansFlag = false;
+        ui->labelImage->setPixmap(sansPixmap[0].scaled(200, 200, Qt::KeepAspectRatio));
+    }else{
+        sansFlag = true;
+        ui->labelImage->setPixmap(sansPixmap[1].scaled(200, 200, Qt::KeepAspectRatio));
+    }
 }
