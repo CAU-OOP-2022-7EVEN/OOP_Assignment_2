@@ -8,6 +8,7 @@
 ## Project Structure
 > Directory Root( ./ )
 >> Source Code for Presentation - Includes QT GUI Related Code. So it would not be compiled without QT Development Environment
+
 > Directory OOP_Assignment2_VS
 >> Source Code for Assignment Submit. Professer can run codes inside this directory with Visual Studio.
 
